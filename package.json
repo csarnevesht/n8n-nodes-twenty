@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-twenty",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "description": "n8n node to call Twenty CRM's API",
   "keywords": [
     "n8n-community-node-package"
@@ -16,7 +16,7 @@
     "url": "https://github.com/csarnevesht/n8n-nodes-twenty"
   },
   "engines": {
-    "node": ">=18.10",
+    "node": ">=20.0.0",
     "pnpm": ">=9.1"
   },
   "packageManager": "pnpm@9.1.4",
@@ -61,7 +61,6 @@
   },
   "dependencies": {
     "axios": "^1.6.7",
-    "dotenv": "^16.5.0",
-    "vm2": "^3.9.19"
+    "dotenv": "^16.5.0"
   }
 }
