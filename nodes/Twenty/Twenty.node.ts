@@ -1,3 +1,7 @@
+import {
+	NodeConnectionType,
+} from 'n8n-workflow';
+
 import type {
 	IDataObject,
 	INodeExecutionData,
@@ -97,8 +101,8 @@ export class Twenty implements INodeType {
 		defaults: {
 			name: 'Twenty',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionType.Main],
 		credentials: [
 			{
 				name: 'twentyApi',
