@@ -21,6 +21,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 9.1.4
+          run_install: false
 
       - name: Get pnpm store directory
         shell: bash
@@ -34,6 +35,9 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+
+      - name: Generate lockfile
+        run: pnpm install --lockfile-only
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
