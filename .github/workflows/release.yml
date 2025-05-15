@@ -36,17 +36,35 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Generate lockfile
-        run: pnpm install --lockfile-only
-
-      - name: Install dependencies
+      - name: Debug environment
         run: |
-          echo "Node.js version: $(node -v)"
-          echo "pnpm version: $(pnpm -v)"
-          pnpm install --frozen-lockfile --verbose
+          echo "Node version: $(node -v)"
+          echo "NPM version: $(npm -v)"
+          echo "PNPM version: $(pnpm -v)"
+          echo "Directory contents:"
+          ls -la
+          echo "Package.json contents:"
+          cat package.json
+
+      - name: Clean install
+        run: |
+          rm -rf node_modules pnpm-lock.yaml
+          pnpm install --no-frozen-lockfile --verbose
+          if [ $? -ne 0 ]; then
+            echo "Install failed. Showing full debug output:"
+            PNPM_DEBUG=true pnpm install --no-frozen-lockfile
+            exit 1
+          fi
 
       - name: Build
-        run: pnpm run build
+        run: |
+          pnpm run build
+          if [ $? -ne 0 ]; then
+            echo "Build failed. Showing TypeScript version and config:"
+            npx tsc --version
+            cat tsconfig.json
+            exit 1
+          fi
 
       - name: Pack
         run: pnpm pack
