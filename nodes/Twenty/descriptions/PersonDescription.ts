@@ -86,7 +86,7 @@ export const personFields: INodeProperties[] = [
 					{ name: '2', value: '2' },
 				],
 				default: '1',
-				description: 'Determines the level of nested related objects to include in the response.',
+				description: 'Determines the level of nested related objects to include in the response',
 			},
 		],
 	},
@@ -122,6 +122,7 @@ export const personFields: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
+		placeholder: 'name@email.com',
 		displayOptions: {
 			show: {
 				resource: ['person'],
