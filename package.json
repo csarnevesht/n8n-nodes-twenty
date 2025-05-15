@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-twenty",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "n8n node to call Twenty CRM's API",
   "keywords": [
     "n8n-community-node-package"
@@ -46,10 +46,12 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
+    "@types/gulp": "^4.0.17",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.57.1",
     "eslint-plugin-n8n-nodes-base": "^1.16.1",
     "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "jest": "^29.7.0",
     "n8n-workflow": "^1.24.0",
     "prettier": "^3.3.2",
