@@ -20,11 +20,13 @@
 		"sourceMap": true,
 		"skipLibCheck": true,
 		"outDir": "./dist/",
+		"types": ["jest", "node"]
 	},
 	"include": [
 		"credentials/**/*",
 		"nodes/**/*",
 		"nodes/**/*.json",
 		"package.json",
+		"**/__tests__/**/*.test.ts"
 	],
 }

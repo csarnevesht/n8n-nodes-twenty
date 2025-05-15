@@ -1,0 +1,14 @@
+=== Twenty API Curl Commands ===
+
+
+=== createOnePerson (2025-05-15T13:56:14.700Z) ===
+curl -X POST 'https://api.twenty.com/people' \
+        -H 'Content-Type: application/json' \
+        -d '{}' \
+        -d '{}'
+
+=== createOnePerson (2025-05-15T13:56:14.706Z) ===
+curl -X POST 'https://api.twenty.com/people' \
+        -H 'Content-Type: application/json' \
+        -d '{}' \
+        -d '{}'
