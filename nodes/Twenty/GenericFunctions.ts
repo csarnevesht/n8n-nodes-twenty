@@ -13,7 +13,7 @@ export async function twentyApiRequest(
 	endpoint: string,
 	body: IDataObject = {},
 	qs: IDataObject = {},
-	path: string = '/rest',
+	path: string = '/graphql',
 ) {
 	const credentials = await this.getCredentials('twentyApi');
 
@@ -21,21 +21,63 @@ export async function twentyApiRequest(
 		throw new NodeOperationError(this.getNode(), 'No credentials returned!');
 	}
 
+	// For GraphQL, we always use POST
 	const options: IRequestOptions = {
-		method,
-		body,
-		qs,
-		uri: `${credentials.domain}${path}${endpoint}`,
+		method: 'POST',
+		body: {
+			query: `
+				mutation CreatePerson($data: PersonCreateInput!) {
+					createPerson(data: $data) {
+						id
+						createdAt
+						updatedAt
+						deletedAt
+						name {
+							firstName
+							lastName
+						}
+						emails {
+							primaryEmail
+							additionalEmails
+						}
+						phones {
+							primaryPhoneNumber
+							primaryPhoneCountryCode
+							primaryPhoneCallingCode
+							additionalPhones
+						}
+						city
+						jobTitle
+						linkedinLink {
+							primaryLinkLabel
+							primaryLinkUrl
+							secondaryLinks
+						}
+						xLink {
+							primaryLinkLabel
+							primaryLinkUrl
+							secondaryLinks
+						}
+						avatarUrl
+						createdBy {
+							source
+							name
+							workspaceMemberId
+							context
+						}
+					}
+				}
+			`,
+			variables: {
+				data: body,
+			},
+		},
+		uri: `${credentials.domain}${path}`,
 		json: true,
+		headers: {
+			'Content-Type': 'application/json',
+		},
 	};
-
-	if (!Object.keys(body).length) {
-		delete options.body;
-	}
-
-	if (!Object.keys(qs).length) {
-		delete options.qs;
-	}
 
 	try {
 		return await this.helpers.requestWithAuthentication.call(this, 'twentyApi', options);

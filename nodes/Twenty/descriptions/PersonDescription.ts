@@ -92,7 +92,7 @@ export const personFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\'s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -142,7 +142,7 @@ export const personFields: INodeProperties[] = [
 				},
 			},
 		},
-	
+
 	// ----------------------------------------
 	//         person: createOnePerson
 	// ----------------------------------------
@@ -172,7 +172,7 @@ export const personFields: INodeProperties[] = [
 						},
 					],
 					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\'s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -186,6 +186,78 @@ export const personFields: INodeProperties[] = [
 				],
 			},
 		},
+	},
+	{
+		displayName: 'First Name',
+		name: 'firstName',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: [
+					'person',
+				],
+				operation: [
+					'createOnePerson',
+				],
+			},
+		},
+		description: 'The first name of the person',
+	},
+	{
+		displayName: 'Last Name',
+		name: 'lastName',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: [
+					'person',
+				],
+				operation: [
+					'createOnePerson',
+				],
+			},
+		},
+		description: 'The last name of the person',
+	},
+	{
+		displayName: 'Email',
+		name: 'email',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: [
+					'person',
+				],
+				operation: [
+					'createOnePerson',
+				],
+			},
+		},
+		description: 'The primary email of the person',
+	},
+	{
+		displayName: 'Phone Number',
+		name: 'phoneNumber',
+		type: 'string',
+		required: true,
+		default: '',
+		displayOptions: {
+			show: {
+				resource: [
+					'person',
+				],
+				operation: [
+					'createOnePerson',
+				],
+			},
+		},
+		description: 'The primary phone number of the person',
 	},
 	{
 		displayName: 'Additional Fields',
@@ -205,252 +277,262 @@ export const personFields: INodeProperties[] = [
 		},
 		options: [
 			{
-				displayName: 'Avatar Url',
+				displayName: 'Avatar URL',
 				name: 'avatarUrl',
 				type: 'string',
 				default: '',
-				description: 'Contact’s avatar',
+				description: 'Contact\'s avatar',
 			},
 			{
 				displayName: 'City',
 				name: 'city',
 				type: 'string',
 				default: '',
-				description: 'Contact’s city',
+				description: 'Contact\'s city',
 			},
 			{
 				displayName: 'Company ID',
 				name: 'companyId',
 				type: 'string',
 				default: '',
-				description: 'Contact’s company ID foreign key',
+				description: 'Contact\'s company ID foreign key',
 			},
-				{
-displayName: 'Created By',
-name: 'createdBy',
-placeholder: 'Add Created By Field',
-type: 'fixedCollection',
-default: {},
-description: 'The creator of the record',
-options: [{
-displayName: 'Created By Fields',
-name: 'createdByFields',
-values: [
-{
-displayName: 'Source',
-name: 'source',
-type: 'string',
-default: '',
-},
-]}],
-},
-				{
-displayName: 'Emails',
-name: 'emails',
-placeholder: 'Add Emails Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Emails',
-options: [{
-displayName: 'Emails Fields',
-name: 'emailsFields',
-values: [
-{
-displayName: 'Primary Email',
-name: 'primaryEmail',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Additional Emails',
-name: 'additionalEmails',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-]}],
-},
 			{
 				displayName: 'Job Title',
 				name: 'jobTitle',
 				type: 'string',
 				default: '',
-				description: 'Contact’s job title',
+				description: 'Contact\'s job title',
 			},
-				{
-displayName: 'Linkedin Link',
-name: 'linkedinLink',
-placeholder: 'Add Linkedin Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Linkedin account',
-options: [{
-displayName: 'Linkedin Link Fields',
-name: 'linkedinLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
-				{
-displayName: 'Name',
-name: 'name',
-placeholder: 'Add Name Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s name',
-options: [{
-displayName: 'Name Fields',
-name: 'nameFields',
-values: [
-{
-displayName: 'First Name',
-name: 'firstName',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Last Name',
-name: 'lastName',
-type: 'string',
-default: '',
-},
-]}],
-},
-				{
-displayName: 'Phones',
-name: 'phones',
-placeholder: 'Add Phones Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s phone numbers',
-options: [{
-displayName: 'Phones Fields',
-name: 'phonesFields',
-values: [
-{
-displayName: 'Additional Phones',
-name: 'additionalPhones',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-{
-displayName: 'Primary Phone Country Code',
-name: 'primaryPhoneCountryCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Calling Code',
-name: 'primaryPhoneCallingCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Number',
-name: 'primaryPhoneNumber',
-type: 'string',
-default: '',
-},
-]}],
-},
-			{
-				displayName: 'Position',
-				name: 'position',
-				type: 'number',
-				default: 0,
-				description: 'Person record Position',
-			},
-				{
-displayName: 'X Link',
-name: 'xLink',
-placeholder: 'Add X Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s X/Twitter account',
-options: [{
-displayName: 'X Link Fields',
-name: 'xLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
 		],
 	},
+	{
+		displayName: 'Created By',
+		name: 'createdBy',
+		placeholder: 'Add Created By Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'The creator of the record',
+		options: [{
+			displayName: 'Created By Fields',
+			name: 'createdByFields',
+			values: [
+				{
+					displayName: 'Source',
+					name: 'source',
+					type: 'string',
+					default: '',
+				},
+			],
+		}],
+	},
+	{
+		displayName: 'Emails',
+		name: 'emails',
+		placeholder: 'Add Emails Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s Emails',
+		options: [{
+			displayName: 'Emails Fields',
+			name: 'emailsFields',
+			values: [
+				{
+					displayName: 'Primary Email',
+					name: 'primaryEmail',
+					type: 'string',
+					default: '',
+				},
+				{
+					displayName: 'Additional Emails',
+					name: 'additionalEmails',
+					type: 'string',
+					typeOptions: {
+						multipleValues: true,
+					},
+					default: [],
+				},
+			],
+		}],
+	},
+	{
+		displayName: 'Linkedin Link',
+		name: 'linkedinLink',
+		placeholder: 'Add Linkedin Link Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s Linkedin account',
+		options: [{
+			displayName: 'Linkedin Link Fields',
+			name: 'linkedinLinkFields',
+			values: [
+				{
+					displayName: 'Primary Link Label',
+					name: 'primaryLinkLabel',
+					type: 'string',
+					default: '',
+				},
+				{
+					displayName: 'Primary Link Url',
+					name: 'primaryLinkUrl',
+					type: 'string',
+					default: '',
+				},
+				{
+					displayName: 'Secondary Links',
+					name: 'secondaryLinks',
+					placeholder: 'Add Secondary Links Field',
+					type: 'fixedCollection',
+					default: {},
+					options: [{
+						displayName: 'Secondary Links Fields',
+						name: 'secondaryLinksFields',
+						values: [
+							{
+								displayName: 'Url',
+								name: 'url',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Label',
+								name: 'label',
+								type: 'string',
+								default: '',
+							},
+						],
+					}],
+				},
+			],
+		}],
+	},
+	{
+		displayName: 'Name',
+		name: 'name',
+		placeholder: 'Add Name Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s name',
+		options: [{
+			displayName: 'Name Fields',
+			name: 'nameFields',
+			values: [
+				{
+					displayName: 'First Name',
+					name: 'firstName',
+					type: 'string',
+					default: '',
+				},
+				{
+					displayName: 'Last Name',
+					name: 'lastName',
+					type: 'string',
+					default: '',
+				},
+			],
+		}],
+	},
+	{
+		displayName: 'Phones',
+		name: 'phones',
+		placeholder: 'Add Phones Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s phone numbers',
+		options: [{
+			displayName: 'Phones Fields',
+			name: 'phonesFields',
+			values: [
+				{
+					displayName: 'Additional Phones',
+					name: 'additionalPhones',
+					type: 'string',
+					typeOptions: {
+						multipleValues: true,
+					},
+					default: [],
+				},
+				{
+					displayName: 'Primary Phone Country Code',
+					name: 'primaryPhoneCountryCode',
+					type: 'string',
+					default: '',
+				},
+				{
+					displayName: 'Primary Phone Calling Code',
+					name: 'primaryPhoneCallingCode',
+					type: 'string',
+					default: '',
+				},
+				{
+					displayName: 'Primary Phone Number',
+					name: 'primaryPhoneNumber',
+					type: 'string',
+					default: '',
+				},
+			],
+		}],
+	},
+	{
+		displayName: 'Position',
+		name: 'position',
+		type: 'number',
+		default: 0,
+		description: 'Person record Position',
+	},
+	{
+		displayName: 'X Link',
+		name: 'xLink',
+		placeholder: 'Add X Link Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s X/Twitter account',
+		options: [{
+			displayName: 'X Link Fields',
+			name: 'xLinkFields',
+			values: [
+				{
+					displayName: 'Primary Link Label',
+					name: 'primaryLinkLabel',
+					type: 'string',
+					default: '',
+				},
+				{
+					displayName: 'Primary Link Url',
+					name: 'primaryLinkUrl',
+					type: 'string',
+					default: '',
+				},
+				{
+					displayName: 'Secondary Links',
+					name: 'secondaryLinks',
+					placeholder: 'Add Secondary Links Field',
+					type: 'fixedCollection',
+					default: {},
+					options: [{
+						displayName: 'Secondary Links Fields',
+						name: 'secondaryLinksFields',
+						values: [
+							{
+								displayName: 'Url',
+								name: 'url',
+								type: 'string',
+								default: '',
+							},
+							{
+								displayName: 'Label',
+								name: 'label',
+								type: 'string',
+								default: '',
+							},
+						],
+					}],
+				},
+			],
+		}],
+	},
+	],
+},
 		{
 			displayName: 'Scope',
 			name: 'scope',
@@ -467,7 +549,7 @@ default: '',
 				},
 			},
 		},
-	
+
 	// ----------------------------------------
 	//         person: deleteOnePerson
 	// ----------------------------------------
@@ -505,7 +587,7 @@ default: '',
 				},
 			},
 		},
-	
+
 	// ----------------------------------------
 	//          person: findManyPeople
 	// ----------------------------------------
@@ -535,7 +617,7 @@ default: '',
 						},
 					],
 					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\'s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 				{
 					displayName: 'Ending Before',
@@ -604,7 +686,7 @@ default: '',
 				},
 			},
 		},
-	
+
 	// ----------------------------------------
 	//          person: findOnePerson
 	// ----------------------------------------
@@ -652,7 +734,7 @@ default: '',
 						},
 					],
 					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\'s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -683,7 +765,7 @@ default: '',
 				},
 			},
 		},
-	
+
 	// ----------------------------------------
 	//       person: findPersonDuplicates
 	// ----------------------------------------
@@ -713,7 +795,7 @@ default: '',
 						},
 					],
 					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\'s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -746,262 +828,262 @@ default: '',
 		},
 		options: [
 				{
-displayName: 'Data',
-name: 'data',
-placeholder: 'Add Data Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Data Fields',
-name: 'dataFields',
-values: [
-{
-displayName: 'Name',
-name: 'name',
-placeholder: 'Add Name Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s name',
-options: [{
-displayName: 'Name Fields',
-name: 'nameFields',
-values: [
-{
-displayName: 'First Name',
-name: 'firstName',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Last Name',
-name: 'lastName',
-type: 'string',
-default: '',
-},
-]}],
-},
-{
-displayName: 'Emails',
-name: 'emails',
-placeholder: 'Add Emails Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Emails',
-options: [{
-displayName: 'Emails Fields',
-name: 'emailsFields',
-values: [
-{
-displayName: 'Primary Email',
-name: 'primaryEmail',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Additional Emails',
-name: 'additionalEmails',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-]}],
-},
-{
-displayName: 'Linkedin Link',
-name: 'linkedinLink',
-placeholder: 'Add Linkedin Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Linkedin account',
-options: [{
-displayName: 'Linkedin Link Fields',
-name: 'linkedinLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
-{
-displayName: 'X Link',
-name: 'xLink',
-placeholder: 'Add X Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s X/Twitter account',
-options: [{
-displayName: 'X Link Fields',
-name: 'xLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
-{
-displayName: 'Job Title',
-name: 'jobTitle',
-type: 'string',
-default: '',
-description: 'Contact’s job title',
-},
-{
-displayName: 'Phones',
-name: 'phones',
-placeholder: 'Add Phones Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s phone numbers',
-options: [{
-displayName: 'Phones Fields',
-name: 'phonesFields',
-values: [
-{
-displayName: 'Additional Phones',
-name: 'additionalPhones',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-{
-displayName: 'Primary Phone Country Code',
-name: 'primaryPhoneCountryCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Calling Code',
-name: 'primaryPhoneCallingCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Number',
-name: 'primaryPhoneNumber',
-type: 'string',
-default: '',
-},
-]}],
-},
-{
-displayName: 'City',
-name: 'city',
-type: 'string',
-default: '',
-description: 'Contact’s city',
-},
-{
-displayName: 'Avatar Url',
-name: 'avatarUrl',
-type: 'string',
-default: '',
-description: 'Contact’s avatar',
-},
-{
-displayName: 'Position',
-name: 'position',
-type: 'number',
-default: 0,
-description: 'Person record Position',
-},
-{
-displayName: 'Created By',
-name: 'createdBy',
-placeholder: 'Add Created By Field',
-type: 'fixedCollection',
-default: {},
-description: 'The creator of the record',
-options: [{
-displayName: 'Created By Fields',
-name: 'createdByFields',
-values: [
-{
-displayName: 'Source',
-name: 'source',
-type: 'string',
-default: '',
-},
-]}],
-},
-{
-displayName: 'Company ID',
-name: 'companyId',
-type: 'string',
-default: '',
-description: 'Contact’s company ID foreign key',
-},
-]}],
-},
+		displayName: 'Data',
+		name: 'data',
+		placeholder: 'Add Data Field',
+		type: 'fixedCollection',
+		default: {},
+		options: [{
+		displayName: 'Data Fields',
+		name: 'dataFields',
+		values: [
+		{
+		displayName: 'Name',
+		name: 'name',
+		placeholder: 'Add Name Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s name',
+		options: [{
+		displayName: 'Name Fields',
+		name: 'nameFields',
+		values: [
+		{
+		displayName: 'First Name',
+		name: 'firstName',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Last Name',
+		name: 'lastName',
+		type: 'string',
+		default: '',
+		},
+		]}],
+		},
+		{
+		displayName: 'Emails',
+		name: 'emails',
+		placeholder: 'Add Emails Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s Emails',
+		options: [{
+		displayName: 'Emails Fields',
+		name: 'emailsFields',
+		values: [
+		{
+		displayName: 'Primary Email',
+		name: 'primaryEmail',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Additional Emails',
+		name: 'additionalEmails',
+		type: 'string',
+		typeOptions: {
+		multipleValues: true,
+		},
+		default: [],
+		},
+		]}],
+		},
+		{
+		displayName: 'Linkedin Link',
+		name: 'linkedinLink',
+		placeholder: 'Add Linkedin Link Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s Linkedin account',
+		options: [{
+		displayName: 'Linkedin Link Fields',
+		name: 'linkedinLinkFields',
+		values: [
+		{
+		displayName: 'Primary Link Label',
+		name: 'primaryLinkLabel',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Primary Link Url',
+		name: 'primaryLinkUrl',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Secondary Links',
+		name: 'secondaryLinks',
+		placeholder: 'Add Secondary Links Field',
+		type: 'fixedCollection',
+		default: {},
+		options: [{
+		displayName: 'Secondary Links Fields',
+		name: 'secondaryLinksFields',
+		values: [
+		{
+		displayName: 'Url',
+		name: 'url',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Label',
+		name: 'label',
+		type: 'string',
+		default: '',
+		},
+		]}],
+		},
+		]}],
+		},
+		{
+		displayName: 'X Link',
+		name: 'xLink',
+		placeholder: 'Add X Link Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s X/Twitter account',
+		options: [{
+		displayName: 'X Link Fields',
+		name: 'xLinkFields',
+		values: [
+		{
+		displayName: 'Primary Link Label',
+		name: 'primaryLinkLabel',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Primary Link Url',
+		name: 'primaryLinkUrl',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Secondary Links',
+		name: 'secondaryLinks',
+		placeholder: 'Add Secondary Links Field',
+		type: 'fixedCollection',
+		default: {},
+		options: [{
+		displayName: 'Secondary Links Fields',
+		name: 'secondaryLinksFields',
+		values: [
+		{
+		displayName: 'Url',
+		name: 'url',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Label',
+		name: 'label',
+		type: 'string',
+		default: '',
+		},
+		]}],
+		},
+		]}],
+		},
+		{
+		displayName: 'Job Title',
+		name: 'jobTitle',
+		type: 'string',
+		default: '',
+		description: 'Contact\'s job title',
+		},
+		{
+		displayName: 'Phones',
+		name: 'phones',
+		placeholder: 'Add Phones Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'Contact\'s phone numbers',
+		options: [{
+		displayName: 'Phones Fields',
+		name: 'phonesFields',
+		values: [
+		{
+		displayName: 'Additional Phones',
+		name: 'additionalPhones',
+		type: 'string',
+		typeOptions: {
+		multipleValues: true,
+		},
+		default: [],
+		},
+		{
+		displayName: 'Primary Phone Country Code',
+		name: 'primaryPhoneCountryCode',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Primary Phone Calling Code',
+		name: 'primaryPhoneCallingCode',
+		type: 'string',
+		default: '',
+		},
+		{
+		displayName: 'Primary Phone Number',
+		name: 'primaryPhoneNumber',
+		type: 'string',
+		default: '',
+		},
+		]}],
+		},
+		{
+		displayName: 'City',
+		name: 'city',
+		type: 'string',
+		default: '',
+		description: 'Contact\'s city',
+		},
+		{
+		displayName: 'Avatar Url',
+		name: 'avatarUrl',
+		type: 'string',
+		default: '',
+		description: 'Contact\'s avatar',
+		},
+		{
+		displayName: 'Position',
+		name: 'position',
+		type: 'number',
+		default: 0,
+		description: 'Person record Position',
+		},
+		{
+		displayName: 'Created By',
+		name: 'createdBy',
+		placeholder: 'Add Created By Field',
+		type: 'fixedCollection',
+		default: {},
+		description: 'The creator of the record',
+		options: [{
+		displayName: 'Created By Fields',
+		name: 'createdByFields',
+		values: [
+		{
+		displayName: 'Source',
+		name: 'source',
+		type: 'string',
+		default: '',
+		},
+		]}],
+		},
+		{
+		displayName: 'Company ID',
+		name: 'companyId',
+		type: 'string',
+		default: '',
+		description: 'Contact\'s company ID foreign key',
+		},
+		]}],
+		},
 		],
 	},
 		{
@@ -1020,7 +1102,7 @@ description: 'Contact’s company ID foreign key',
 				},
 			},
 		},
-	
+
 	// ----------------------------------------
 	//         person: updateOnePerson
 	// ----------------------------------------
@@ -1068,7 +1150,7 @@ description: 'Contact’s company ID foreign key',
 						},
 					],
 					default: '1',
-					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\’s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
+					description: 'Determines the level of nested related objects to include in the response. - 0: Returns only the primary object\'s information. - 1: Returns the primary object along with its directly related objects (with no additional nesting for related objects). - 2: Returns the primary object, its directly related objects, and the related objects of those related objects.',
 				},
 		],
 		default: {},
@@ -1105,190 +1187,196 @@ description: 'Contact’s company ID foreign key',
 				name: 'avatarUrl',
 				type: 'string',
 				default: '',
-				description: 'Contact’s avatar',
+				description: 'Contact\'s avatar',
 			},
 			{
 				displayName: 'City',
 				name: 'city',
 				type: 'string',
 				default: '',
-				description: 'Contact’s city',
+				description: 'Contact\'s city',
 			},
 			{
 				displayName: 'Company ID',
 				name: 'companyId',
 				type: 'string',
 				default: '',
-				description: 'Contact’s company ID foreign key',
+				description: 'Contact\'s company ID foreign key',
 			},
-				{
-displayName: 'Created By',
-name: 'createdBy',
-placeholder: 'Add Created By Field',
-type: 'fixedCollection',
-default: {},
-description: 'The creator of the record',
-options: [{
-displayName: 'Created By Fields',
-name: 'createdByFields',
-values: [
-{
-displayName: 'Source',
-name: 'source',
-type: 'string',
-default: '',
-},
-]}],
-},
-				{
-displayName: 'Emails',
-name: 'emails',
-placeholder: 'Add Emails Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Emails',
-options: [{
-displayName: 'Emails Fields',
-name: 'emailsFields',
-values: [
-{
-displayName: 'Primary Email',
-name: 'primaryEmail',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Additional Emails',
-name: 'additionalEmails',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-]}],
-},
+			{
+				displayName: 'Created By',
+				name: 'createdBy',
+				placeholder: 'Add Created By Field',
+				type: 'fixedCollection',
+				default: {},
+				description: 'The creator of the record',
+				options: [{
+					displayName: 'Created By Fields',
+					name: 'createdByFields',
+					values: [
+						{
+							displayName: 'Source',
+							name: 'source',
+							type: 'string',
+							default: '',
+						},
+					],
+				}],
+			},
+			{
+				displayName: 'Emails',
+				name: 'emails',
+				placeholder: 'Add Emails Field',
+				type: 'fixedCollection',
+				default: {},
+				description: 'Contact\'s Emails',
+				options: [{
+					displayName: 'Emails Fields',
+					name: 'emailsFields',
+					values: [
+						{
+							displayName: 'Primary Email',
+							name: 'primaryEmail',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Additional Emails',
+							name: 'additionalEmails',
+							type: 'string',
+							typeOptions: {
+								multipleValues: true,
+							},
+							default: [],
+						},
+					],
+				}],
+			},
 			{
 				displayName: 'Job Title',
 				name: 'jobTitle',
 				type: 'string',
 				default: '',
-				description: 'Contact’s job title',
+				description: 'Contact\'s job title',
 			},
-				{
-displayName: 'Linkedin Link',
-name: 'linkedinLink',
-placeholder: 'Add Linkedin Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s Linkedin account',
-options: [{
-displayName: 'Linkedin Link Fields',
-name: 'linkedinLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
-				{
-displayName: 'Name',
-name: 'name',
-placeholder: 'Add Name Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s name',
-options: [{
-displayName: 'Name Fields',
-name: 'nameFields',
-values: [
-{
-displayName: 'First Name',
-name: 'firstName',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Last Name',
-name: 'lastName',
-type: 'string',
-default: '',
-},
-]}],
-},
-				{
-displayName: 'Phones',
-name: 'phones',
-placeholder: 'Add Phones Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s phone numbers',
-options: [{
-displayName: 'Phones Fields',
-name: 'phonesFields',
-values: [
-{
-displayName: 'Additional Phones',
-name: 'additionalPhones',
-type: 'string',
-typeOptions: {
-multipleValues: true,
-},
-default: [],
-},
-{
-displayName: 'Primary Phone Country Code',
-name: 'primaryPhoneCountryCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Calling Code',
-name: 'primaryPhoneCallingCode',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Phone Number',
-name: 'primaryPhoneNumber',
-type: 'string',
-default: '',
-},
-]}],
-},
+			{
+				displayName: 'Linkedin Link',
+				name: 'linkedinLink',
+				placeholder: 'Add Linkedin Link Field',
+				type: 'fixedCollection',
+				default: {},
+				description: 'Contact\'s Linkedin account',
+				options: [{
+					displayName: 'Linkedin Link Fields',
+					name: 'linkedinLinkFields',
+					values: [
+						{
+							displayName: 'Primary Link Label',
+							name: 'primaryLinkLabel',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Primary Link Url',
+							name: 'primaryLinkUrl',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Secondary Links',
+							name: 'secondaryLinks',
+							placeholder: 'Add Secondary Links Field',
+							type: 'fixedCollection',
+							default: {},
+							options: [{
+								displayName: 'Secondary Links Fields',
+								name: 'secondaryLinksFields',
+								values: [
+									{
+										displayName: 'Url',
+										name: 'url',
+										type: 'string',
+										default: '',
+									},
+									{
+										displayName: 'Label',
+										name: 'label',
+										type: 'string',
+										default: '',
+									},
+								],
+							}],
+						},
+					],
+				}],
+			},
+			{
+				displayName: 'Name',
+				name: 'name',
+				placeholder: 'Add Name Field',
+				type: 'fixedCollection',
+				default: {},
+				description: 'Contact\'s name',
+				options: [{
+					displayName: 'Name Fields',
+					name: 'nameFields',
+					values: [
+						{
+							displayName: 'First Name',
+							name: 'firstName',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Last Name',
+							name: 'lastName',
+							type: 'string',
+							default: '',
+						},
+					],
+				}],
+			},
+			{
+				displayName: 'Phones',
+				name: 'phones',
+				placeholder: 'Add Phones Field',
+				type: 'fixedCollection',
+				default: {},
+				description: 'Contact\'s phone numbers',
+				options: [{
+					displayName: 'Phones Fields',
+					name: 'phonesFields',
+					values: [
+						{
+							displayName: 'Additional Phones',
+							name: 'additionalPhones',
+							type: 'string',
+							typeOptions: {
+								multipleValues: true,
+							},
+							default: [],
+						},
+						{
+							displayName: 'Primary Phone Country Code',
+							name: 'primaryPhoneCountryCode',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Primary Phone Calling Code',
+							name: 'primaryPhoneCallingCode',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Primary Phone Number',
+							name: 'primaryPhoneNumber',
+							type: 'string',
+							default: '',
+						},
+					],
+				}],
+			},
 			{
 				displayName: 'Position',
 				name: 'position',
@@ -1296,55 +1384,57 @@ default: '',
 				default: 0,
 				description: 'Person record Position',
 			},
-				{
-displayName: 'X Link',
-name: 'xLink',
-placeholder: 'Add X Link Field',
-type: 'fixedCollection',
-default: {},
-description: 'Contact’s X/Twitter account',
-options: [{
-displayName: 'X Link Fields',
-name: 'xLinkFields',
-values: [
-{
-displayName: 'Primary Link Label',
-name: 'primaryLinkLabel',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Primary Link Url',
-name: 'primaryLinkUrl',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Secondary Links',
-name: 'secondaryLinks',
-placeholder: 'Add Secondary Links Field',
-type: 'fixedCollection',
-default: {},
-options: [{
-displayName: 'Secondary Links Fields',
-name: 'secondaryLinksFields',
-values: [
-{
-displayName: 'Url',
-name: 'url',
-type: 'string',
-default: '',
-},
-{
-displayName: 'Label',
-name: 'label',
-type: 'string',
-default: '',
-},
-]}],
-},
-]}],
-},
+			{
+				displayName: 'X Link',
+				name: 'xLink',
+				placeholder: 'Add X Link Field',
+				type: 'fixedCollection',
+				default: {},
+				description: 'Contact\'s X/Twitter account',
+				options: [{
+					displayName: 'X Link Fields',
+					name: 'xLinkFields',
+					values: [
+						{
+							displayName: 'Primary Link Label',
+							name: 'primaryLinkLabel',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Primary Link Url',
+							name: 'primaryLinkUrl',
+							type: 'string',
+							default: '',
+						},
+						{
+							displayName: 'Secondary Links',
+							name: 'secondaryLinks',
+							placeholder: 'Add Secondary Links Field',
+							type: 'fixedCollection',
+							default: {},
+							options: [{
+								displayName: 'Secondary Links Fields',
+								name: 'secondaryLinksFields',
+								values: [
+									{
+										displayName: 'Url',
+										name: 'url',
+										type: 'string',
+										default: '',
+									},
+									{
+										displayName: 'Label',
+										name: 'label',
+										type: 'string',
+										default: '',
+									},
+								],
+							}],
+						},
+					],
+				}],
+			},
 		],
 	},
 		{

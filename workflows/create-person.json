@@ -1,0 +1,200 @@
+{
+  "name": "Create Person in Twenty",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "firstName": {
+            "displayName": "First Name",
+            "type": "string",
+            "default": "",
+            "description": "Optional: Override random first name"
+          },
+          "lastName": {
+            "displayName": "Last Name",
+            "type": "string",
+            "default": "",
+            "description": "Optional: Override random last name"
+          },
+          "email": {
+            "displayName": "Email",
+            "type": "string",
+            "default": "",
+            "description": "Optional: Override random email"
+          },
+          "phone": {
+            "displayName": "Phone Number",
+            "type": "string",
+            "default": "",
+            "description": "Optional: Override random phone number"
+          },
+          "city": {
+            "displayName": "City",
+            "type": "string",
+            "default": "",
+            "description": "Optional: Override random city"
+          },
+          "jobTitle": {
+            "displayName": "Job Title",
+            "type": "string",
+            "default": "",
+            "description": "Optional: Override random job title"
+          }
+        }
+      },
+      "id": "start",
+      "name": "Manual",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get manual input data\nconst manualInput = $input.first();\n\n// Function to generate a random phone number\nfunction generatePhone() {\n    return Math.floor(Math.random() * 9000000000 + 1000000000).toString();\n}\n\n// Function to generate a random email\nfunction generateEmail(firstName, lastName) {\n    const domains = ['gmail.com', 'yahoo.com', 'outlook.com', 'company.com'];\n    const domain = domains[Math.floor(Math.random() * domains.length)];\n    return `${firstName.toLowerCase()}.${lastName.toLowerCase()}@${domain}`;\n}\n\n// List of sample data\nconst firstNames = ['John', 'Jane', 'Michael', 'Emily', 'David', 'Sarah', 'James', 'Emma', 'William', 'Olivia'];\nconst lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez'];\nconst cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose'];\nconst jobTitles = ['Software Engineer', 'Product Manager', 'Sales Director', 'Marketing Manager', 'CEO', 'CTO', 'CFO', 'HR Manager'];\n\n// Use manual input or generate random data\nconst firstName = manualInput.firstName || firstNames[Math.floor(Math.random() * firstNames.length)];\nconst lastName = manualInput.lastName || lastNames[Math.floor(Math.random() * lastNames.length)];\nconst city = manualInput.city || cities[Math.floor(Math.random() * cities.length)];\nconst jobTitle = manualInput.jobTitle || jobTitles[Math.floor(Math.random() * jobTitles.length)];\nconst email = manualInput.email || generateEmail(firstName, lastName);\nconst phone = manualInput.phone || generatePhone();\n\nreturn [\n  {\n    json: {\n      data: {\n        name: {\n          firstName,\n          lastName\n        },\n        emails: {\n          primaryEmail: email\n        },\n        phones: {\n          primaryPhoneNumber: phone,\n          primaryPhoneCountryCode: 'US',\n          primaryPhoneCallingCode: '1'\n        },\n        city,\n        jobTitle\n      }\n    }\n  }\n];"
+      },
+      "id": "generate-random-data",
+      "name": "Generate Random Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "generatedData",
+              "value": "={{ $json }}"
+            }
+          ]
+        }
+      },
+      "id": "debug-input",
+      "name": "Debug Generated Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        400,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "person",
+        "operation": "createOnePerson",
+        "additionalFields": {
+          "name": {
+            "nameFields": {
+              "firstName": "={{ $json.data.name.firstName }}",
+              "lastName": "={{ $json.data.name.lastName }}"
+            }
+          },
+          "emails": {
+            "primaryEmail": "={{ $json.data.emails.primaryEmail }}"
+          },
+          "phones": {
+            "primaryPhoneNumber": "={{ $json.data.phones.primaryPhoneNumber }}",
+            "primaryPhoneCountryCode": "={{ $json.data.phones.primaryPhoneCountryCode }}",
+            "primaryPhoneCallingCode": "={{ $json.data.phones.primaryPhoneCallingCode }}"
+          },
+          "city": "={{ $json.data.city }}",
+          "jobTitle": "={{ $json.data.jobTitle }}"
+        }
+      },
+      "id": "create-person",
+      "name": "Twenty",
+      "type": "n8n-nodes-twenty.twenty",
+      "typeVersion": 1,
+      "position": [
+        600,
+        300
+      ],
+      "credentials": {
+        "twentyApi": {
+          "id": "twenty-api-credentials",
+          "name": "Twenty API Credentials"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "apiResponse",
+              "value": "={{ $json }}"
+            }
+          ]
+        }
+      },
+      "id": "debug-output",
+      "name": "Debug API Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        800,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual": {
+      "main": [
+        [
+          {
+            "node": "Generate Random Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Random Data": {
+      "main": [
+        [
+          {
+            "node": "Debug Generated Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Debug Generated Data": {
+      "main": [
+        [
+          {
+            "node": "Twenty",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twenty": {
+      "main": [
+        [
+          {
+            "node": "Debug API Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "version": 1,
+  "meta": {
+    "instanceId": "workflow-create-person"
+  }
+}
